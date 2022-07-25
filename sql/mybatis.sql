@@ -92,3 +92,8 @@ commit;
 -- sqlplus를 이용한 사용법
 -- 1. cmd에서 해당 dir로 이동
 -- 2. sqlplus -s (유저/비밀번호) < (실행파일.sql) 입력
+
+select users.user_id, user_name, reg_date, address
+		from users join add addresses
+		on users.user_id = addresses.user_id
+		order by user_id;

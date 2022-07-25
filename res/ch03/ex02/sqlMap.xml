@@ -4,8 +4,8 @@
 <mapper namespace='ch03.ex02.Map'>
 	<select id='selectUsers' resultMap='userMap'>
 		select users.user_id, user_name, reg_date, address
-		from users join add addresses
-		on users.user.id = addresses.user_id
+		from users join addresses
+		on users.user_id = addresses.user_id
 		order by user_id
 	</select>
 	
