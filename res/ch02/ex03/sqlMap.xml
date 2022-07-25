@@ -4,8 +4,17 @@
 <mapper namespace='ch02.ex03.Map'> <!-- 해당 소스의 map을 가리킨다 -->
 	<insert id='insertUser'>
 		insert into users values(
-			#{userId},
-			#{userName},
-			#{regDate})
-	</insert>		
+			#{userId, jdbcType=NUMERIC}, <!-- 데이터타입을 입력해 입력이 되지않더라도 일단 해당타입으로 적용시켜 error를 방지한다. -->
+			#{userName, jdbcType=VARCHAR},
+			#{regDate, jdbcType=DATE})
+	</insert>
+	
+	<insert id= 'insertUser2'>
+		insert into users values(#{userId}, #{userName}, #{regDate})
+	</insert>
+	
+	<!-- 가독성은 떨어지지만 mapper에서 annotation을 쓰지않고 이렇게 파라미터를 직접 지정할수도있다. -->
+	<insert id= 'insertUser3'>
+		insert into users values(#{param1}, #{param2}, #{param3})
+	</insert>
 </mapper>

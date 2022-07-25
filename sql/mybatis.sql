@@ -42,7 +42,7 @@ create table mybatis.users(
     
 create table mybatis.addresses(
     user_id number(2),
-    adrress varchar2(30));
+    address varchar2(30));
     
 create table mybatis.posts(
     post_id number(3),
@@ -60,6 +60,7 @@ alter table mybatis.posts
 alter table mybatis.addresses
     add constraint addr_userid_fk foreign key(user_id)
     references mybatis.users(user_id);
+    
 alter table mybatis.posts
     add constraint post_userid_fk foreign key(user_id)
     references mybatis.users(user_id);

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding= 'utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch03.ex02.Map'>
+	<select id='selectUsers' resultMap='userMap'>
+		select users.user_id, user_name, reg_date, address
+		from users join add addresses
+		on users.user.id = addresses.user_id
+		order by user_id
+	</select>
+	
+	<resultMap id='userMap' type='myUser'>
+		<id property='userId' column='user_id'/>
+		<result property='userName' column='user_name'/>
+		<result property='regDate' column='reg_date'/>
+		<association property='address' resultMap='addressMap'/>
+	</resultMap>
+	
+	<resultMap id='addressMap' type='address'>
+		<result property='address' column='address'/>
+	</resultMap>
+</mapper>
