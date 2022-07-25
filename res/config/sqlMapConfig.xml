@@ -3,17 +3,17 @@
 	'http://mybatis.org/dtd/mybatis-3-config.dtd'>
 <configuration> <!-- 주석달기  -->
 	<properties resource= 'config/jdbc.properties'>
-		<property name = 'driver' value= 'oracle.jdbc.driver.OracleDriver'/>
+		<property name= 'driver' value= 'oracle.jdbc.driver.OracleDriver'/>
 	</properties>
 	
 	<typeAliases> 
-		<typeAlias type = 'ch02.domain.User' alias = 'user'/>
+		<typeAlias type= 'ch02.domain.User' alias= 'user'/>
 	</typeAliases>
 	
-	<environments default='development'> 						<!-- 기본타입 지정 -->
-		<environment id="development">
+	<environments default='development'> 	<!-- 기본타입 지정 -->
+		<environment id='development'>
 			<transactionManager type= 'JDBC'/>
-			<dataSource type= 'POOLED'> 						<!--EL(Expression Language) / POOLED - connection을 n개 준비한다. -->
+			<dataSource type= 'POOLED'> 	<!--EL(Expression Language) / POOLED - connection을 n개 준비한다. -->
 				<property name= 'driver' value= '${driver}'/> 	<!--${(value)] value의 주소값 -->
 				<property name= 'url' value= '${url}'/>
 				<property name= 'username' value= '${username}'/>
@@ -23,7 +23,9 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource='ch02/ex01/sqlMap.xml'/>
+		<mapper resource='ch02/ex01/sqlMap.xml'/> <!-- 경로의 시작점은 classpath -->
+		<mapper resource='ch02/ex02/sqlMap.xml'/>
+		<mapper resource='ch02/ex03/sqlMap.xml'/>
 	</mappers>
 </configuration>
 

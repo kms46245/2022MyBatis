@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding= 'utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch02.ex02.Map'> <!-- 해당 소스의 map을 가리킨다 -->
+	<select id= 'selectUser' resultMap= 'userMap'> <!-- 1.or mapping을 받을 object가 있어야한다. 2. return 받는 select값을 맞춰야한다.(여러개일땐 resultmap) -->
+		select user_id, user_name, reg_date
+		from users
+		where user_id = #{userId} <!-- Map의 파라미터를 받아오는것이다. 아무값이나 있어도 상관없지만 가독성을위해 이름을 통일 -->
+	</select>
+	
+	<select id= 'selectUser2' resultMap= 'userMap'>
+		select user_id, user_name, reg_date
+		from users
+		where user_name = #{userName}
+	</select>
+	
+	<select id= 'selectUser3' resultMap= 'userMap'>
+		select user_id, user_name, reg_date
+		from users
+		where reg_date = #{regDate}
+	</select>
+	
+	<resultMap id= 'userMap' type= 'user'>
+		<id property='userId' column='user_id'/> <!-- 전부 result로 해도 상관없지만 id로 지정하면 값을 쓰고도 남기게되어 나중에 이용할때 용이하다. -->
+		<result property='userName' column='user_name'/>
+		<result property='regDate' column='reg_date'/>
+	</resultMap>	
+</mapper>

@@ -17,6 +17,6 @@ public class Configuration {
 	}
 	
 	public static <T> T getMapper(Class<T> arg) {
-		return sqlSessionFactory.openSession(true).getMapper(arg); // auto commit이 되더라도 true로 값을 받음
+		return sqlSessionFactory.openSession(true).getMapper(arg); // auto commit을 위해 true로 값을 받음
 	}
 }

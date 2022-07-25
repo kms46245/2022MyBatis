@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding= 'utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch02.ex03.Map'> <!-- 해당 소스의 map을 가리킨다 -->
+	<insert id='insertUser'>
+		insert into users values(
+			#{userId},
+			#{userName},
+			#{regDate})
+	</insert>		
+</mapper>
