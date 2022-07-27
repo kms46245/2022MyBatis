@@ -25,15 +25,16 @@
 		</environment>
 	</environments>
 	
-	<mappers>
-		<mapper resource='ch02/ex01/sqlMap.xml'/> <!-- 경로의 시작점은 classpath -->
+	<mappers> <!-- map register - mapping.xml파일을 하나씩 다 추가해서 경로를 지정해준다. -->
+		<mapper resource='ch02/ex01/sqlMap.xml'/> <!-- 경로의 시작점은 classPath -->
 		<mapper resource='ch02/ex02/sqlMap.xml'/>
 		<mapper resource='ch02/ex03/sqlMap.xml'/>
 		<mapper resource='ch02/ex04/sqlMap.xml'/>
 		<mapper resource='ch02/ex05/sqlMap.xml'/>
 		<mapper resource='ch03/ex01/sqlMap.xml'/>
 		<mapper resource='ch03/ex02/sqlMap.xml'/>
+		<mapper resource='ch04/ex01/sqlMap.xml'/>
+		<mapper resource='ch04/ex02/sqlMap.xml'/>
+		<mapper resource='ch05/ex01/sqlMap.xml'/>
 	</mappers>
-</configuration>
-
-	
+</configuration>	

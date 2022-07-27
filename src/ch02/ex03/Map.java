@@ -9,7 +9,7 @@ import ch02.domain.User;
 public interface Map {
 	int insertUser(User user);
 	
-	// 각 파라미터를 불러올때는 annotation을 이용해야한다. 그러지않으면 user파라미터로 mybatis가 인식하지못함.
+	// 각 파라미터를 불러올때는 annotation을 이용해야한다. 그러지않으면 user파라미터로 myBatis가 인식하지못함.
 	int insertUser2(@Param("userId") int userId,
 					@Param("userName") String userName,
 					@Param("regDate") LocalDate regDate);

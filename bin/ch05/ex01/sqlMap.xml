@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding= 'utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch05.ex01.Map'>
+	<select id='selectUser' resultMap='userMap'>
+		select users.user_id, user_name, reg_date, post_title, post_content
+		from users join posts
+		on users.user_id = posts.user_id
+		where users.user_name = #{userName}
+		<!-- if - 조건을 걸고 그에 맞는 값을 가져온다. -->
+		<if test='post != null and post.title != null'>
+			and post_title like '%' || #{post.title} || '%'
+		</if>
+		<if test='post != null and post.content != null'>
+			and post_content like '%' || #{post.content} || '%'
+		</if>
+	</select>
+	
+	<resultMap id='userMap' type='ch05.domain.User'>
+		<id property='userId' column='user_id'/>
+		<result property='userName' column='user_name'/>
+		<result property='regDate' column='reg_date'/>
+		<!-- list의 값을 받을때 collection이라고하면 외우기쉽다. -->
+		<!-- ofType - resultMap을 또만들지않고서 이용할수있는 방법 -->
+		<collection property='posts' ofType='ch05.domain.Post'>
+			<result property='title' column='post_title'/>
+			<result property='content' column='post_content'/>
+		</collection>
+	</resultMap>
+</mapper>

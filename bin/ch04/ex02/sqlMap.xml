@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding= 'utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch04.ex02.Map'>
+	<select id='selectUsers' resultMap='userMap'>
+		select users.user_id, user_name, reg_date, post_title, post_content
+		from users join posts
+		on users.user_id = posts.user_id
+		order by users.user_id
+	</select>
+	
+	<!-- setter를 이용한 방법
+	<resultMap id='userMap' type='ch04.domain.User'>
+		<id property='userId' column='user_id'/>
+		<result property='userName' column='user_name'/>
+		<result property='regDate' column='reg_date'/>
+		<!-  association과 마찬가지로 resultMap활용이 가능하다 ->
+		<collection property='posts' resultMap='postMap'/>
+	</resultMap>
+	-->
+	
+	<!--  생성자를 이용한 방식 (도메인에 생성자가 반드시 필요) -->
+	<resultMap id='userMap' type='ch04.domain.User'>
+		<constructor> 
+			<idArg column='user_id' javaType='_int'/> <!-- column은 생성자에서의 변수이름 / javatype을 생성자와 맞게 지정해줘야한다. -->
+			<arg column='user_name' javaType='string'/>
+			<arg column='reg_date' javaType='java.time.LocalDate'/>
+		</constructor>
+		<collection property='posts' resultMap='postMap'/> <!-- 다른 테이블에 대한값은 마찬가지로 collection을 사용  -->
+	</resultMap>
+	
+	<resultMap id='postMap' type='ch04.domain.Post'>
+		<result property='title' column='post_title'/>
+		<result property='content' column='post_content'/>
+	</resultMap>
+</mapper>

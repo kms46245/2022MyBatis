@@ -13,7 +13,6 @@
 	<!-- or mapping 되지않은 address를 독립되어있는 객체로 인식되기때문에 부를수있다. -->
 	
 	<select id='selectAddress' resultType='address'>
-	
 		select address
 		from addresses
 		where user_id = #{userId}
@@ -24,5 +23,6 @@
 		<result property='userName' column='user_name'/>
 		<result property='regDate' column='reg_date'/>
 	 	<association property='address' column='user_id' select='selectAddress'/>
+	 	<!-- association에서 말하는 column은 가리키는게 아니라 파라미터를 뜻한다. -->
 	</resultMap>	
 </mapper>

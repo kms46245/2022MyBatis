@@ -21,7 +21,7 @@
 	</select>
 	
 	<resultMap id= 'userMap' type= 'user'>
-		<id property='userId' column='user_id'/> <!-- 전부 result로 해도 상관없지만 id로 지정하면 값을 쓰고도 남기게되어 나중에 이용할때 용이하다. -->
+		<id property='userId' column='user_id'/> <!-- 전부 result로 해도 상관없지만 id로 지정하면 값을 쓰고도 남기게되어(cache) 나중에 이용할때 용이하다. -->
 		<result property='userName' column='user_name'/>
 		<result property='regDate' column='reg_date'/>
 	</resultMap>	
