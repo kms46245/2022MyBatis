@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding= 'utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch05.ex03.Map'>
+	<select id='selectUsers' resultMap='userMap'>
+		select users.user_id, user_name, reg_date, post_title, post_content
+		from users join posts
+		on users.user_id = posts.user_id
+		<!-- where - 일반 where과 다르게 태그로 이용하면
+		 SQL코드를 여러개 return 받을 수 있다.
+		 return되어 붙는 조건은 아래조건을 통해 1개이상의 SQL코드를 리턴받으면 적용
+		 그렇지않을때에는 아예 적용하지 않는다.-->
+		<where>
+			<if test='userName != null'>
+				user_name = #{userName}
+			</if>
+			<!-- 만약 where을 받지못하는 상황에서 and만 오게되면
+			myBatis에서 알아서 and를 지워줘서 syntax error가 뜨지않는다. -->
+			<if test='post != null and post.title != null'>
+				and post_title like '%' || #{post.title} || '%'
+			</if>
+			<if test='post != null and post.content != null'>
+				and post_content like '%' || #{post.content} || '%'
+			</if>
+		</where>
+	</select>
+	
+	<resultMap id='userMap' type='ch05.domain.User'>
+		<id property='userId' column='user_id'/>
+		<result property='userName' column='user_name'/>
+		<result property='regDate' column='reg_date'/>
+		<!-- 어디에서든 속성의 순서는 자유롭게 해도 상관없다(Markup Language의 특성) -->
+		<collection property='posts' columnPrefix='post_' ofType='ch05.domain.Post'>
+			<result property='title' column='title'/>
+			<result property='content' column='content'/>
+		</collection>	
+	</resultMap>
+</mapper>

@@ -7,11 +7,12 @@
 		from users join posts
 		on users.user_id = posts.user_id
 		where users.user_name = #{userName}
-		<!-- if - 조건을 걸고 그에 맞는 값을 가져온다. -->
+		<!-- if - 조건을 걸고 그에 맞는 값을 가져온다. 없으면 무시하게된다. -->
 		<if test='post != null and post.title != null'>
 			and post_title like '%' || #{post.title} || '%'
 		</if>
-		<if test='post != null and post.content != null'>
+		<!-- null이 아니다를 받을지 isEmpty를 받을지를 선택하는것에 따라 결과가 다르다. -->
+		<if test='post != null and !post.content.isEmpty()'>
 			and post_content like '%' || #{post.content} || '%'
 		</if>
 	</select>
