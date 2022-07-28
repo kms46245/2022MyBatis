@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding= 'utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch06.dao.map.EmployeeMap'>
+	<select id='selectEmployees' resultType='ch06.domain.Employee'>
+		select employee_id employeeId, last_name lastName, hire_date hireDate
+		from employees
+		order by employeeId
+	</select>
+</mapper>

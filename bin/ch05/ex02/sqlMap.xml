@@ -12,8 +12,8 @@
 		on users.user_id = posts.user_id
 		where user_name = #{userName}
 		<!-- 예전 myBatis에서는 의미없는 조건문 (ex) where 1 = 1) 하나를 걸어서
-		여러조건을 걸수있는 선제조건을 만족했지만 지금은 필요없다. -->
-		<!-- choose - if에서는 n개의 경우에 따라 n번씩 조건을 찾게되지만, choose는
+		여러조건을 걸수있는 선제조건을 만족했지만 지금은 필요없다.
+		choose - if에서는 n개의 경우에 따라 n번씩 조건을 찾게되지만, choose는
 		여러조건중에 한번이라도 걸리면 바로 빠져나오게된다.-->
 		<choose>
 			<when test='post != null and post.title != null'>
