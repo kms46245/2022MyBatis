@@ -5,7 +5,9 @@ import config.Configuration;
 public class Main {
 	public static void main(String[] args) {
 		Map mapper = Configuration.getMapper(Map.class);
-				
+
+		System.out.println(mapper.selectUser(1));
+		System.out.println(mapper.selectUser(2));
 		System.out.println(mapper.selectUser(11));
 	}
 }

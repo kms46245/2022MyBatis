@@ -64,5 +64,7 @@
 		<mapper class='ch07.ex01.Map'/> <!-- mapper가없을땐 구문을 선언한 클래스를 부른다.  -->
 		<mapper class='ch07.ex02.Map'/>
 		<mapper class='ch07.ex03.Map'/>
+		<mapper class='ch07.ex04.Map'/>
+		<mapper class='ch07.ex05.Map'/>
 	</mappers>
 </configuration>	
